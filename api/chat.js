@@ -1,13 +1,13 @@
-import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 
-dotenv.config(); // Cargar las variables de entorno
+dotenv.config(); // Cargar variables de entorno
 
-const app = express();
-app.use(express.json());
+export default async function handler(req, res) {
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method not allowed. Use POST." });
+    }
 
-app.post("/api/chat", async (req, res) => {
     const { userMessage } = req.body;
 
     try {
@@ -36,9 +36,4 @@ app.post("/api/chat", async (req, res) => {
         console.error("Error al conectarse con OpenAI:", error);
         res.status(500).json({ error: "Hubo un error al procesar tu consulta." });
     }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+}

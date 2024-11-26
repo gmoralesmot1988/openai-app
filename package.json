@@ -1,19 +1,12 @@
 {
   "name": "openai-backend",
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node api/chat.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api/chat.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.21.1",
     "node-fetch": "^3.3.2"
   }
 }
